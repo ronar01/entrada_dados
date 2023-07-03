@@ -15,7 +15,7 @@ class _CampoTextoState extends State<CampoTexto> {
       child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.deepPurpleAccent,
-            title: Text(
+            title: const Text(
               "Entrada de dados",
               style: TextStyle(
                 fontSize: 20,
@@ -23,11 +23,33 @@ class _CampoTextoState extends State<CampoTexto> {
               ),
             ),
           ),
-          body: Container(
-            padding: EdgeInsets.all(32),
-            child: TextField(
-              keyboardType: TextInputType.number,
-            ),
+          body: Column(
+            children: [
+              Padding(
+              padding: EdgeInsets.all(32),
+              child: TextField(
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: 'Digite um valor',
+                ),
+                style: TextStyle(
+                  fontSize: 25,
+                ),
+              ),
+              ),
+              ElevatedButton(
+                  onPressed: (){},
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStatePropertyAll(Colors.deepPurpleAccent),
+                  ),
+                  child: Text(
+                    'Continuar',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+              )
+            ],
           ),
       ),
     );
