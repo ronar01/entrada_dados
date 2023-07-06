@@ -9,6 +9,8 @@ class CampoTexto extends StatefulWidget {
 }
 
 class _CampoTextoState extends State<CampoTexto> {
+  TextEditingController _controllerAlcool = TextEditingController();
+  TextEditingController _controllerGasolina = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -23,34 +25,61 @@ class _CampoTextoState extends State<CampoTexto> {
               ),
             ),
           ),
-          body: Column(
-            children: [
-              Padding(
-              padding: EdgeInsets.all(32),
-              child: TextField(
-                keyboardType: TextInputType.number,
-                decoration: InputDecoration(
-                  labelText: 'Digite um valor',
-                ),
-                style: TextStyle(
-                  fontSize: 25,
-                ),
-              ),
-              ),
-              ElevatedButton(
-                  onPressed: (){},
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStatePropertyAll(Colors.deepPurpleAccent),
-                  ),
-                  child: Text(
-                    'Continuar',
-                    style: TextStyle(
-                      fontSize: 20,
+          body: Container(
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.all(32),
+                    child: Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(bottom: 15),
+                            child: Image.asset("images/logo.png"),
+                          ),
+                          TextField(
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              labelText: 'Preço Alcool',
+                            ),
+                            style: TextStyle(
+                              fontSize: 25,
+                            ),
+                            controller: _controllerAlcool,
+                          ),
+                          TextField(
+                            keyboardType: TextInputType.number,
+                            decoration: InputDecoration(
+                              labelText: 'Preço Gasolina',
+                            ),
+                            style: TextStyle(
+                              fontSize: 25,
+                            ),
+                            controller: _controllerGasolina,
+                          )
+                        ]
                     ),
-                  ),
-              )
-            ],
-          ),
+                  ), //Collumn
+                  Padding(
+                    padding: EdgeInsets.only(left: 32, right: 32),
+                    child: ElevatedButton(
+                      onPressed: (){},
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStatePropertyAll(Colors.deepPurpleAccent),
+                      ),
+                      child: Text(
+                        'Calcular',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
+                      ),
+                    ) ,
+                  )
+                ],
+              ),
+            ),
+          )
       ),
     );
   }
